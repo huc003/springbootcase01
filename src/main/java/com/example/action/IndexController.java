@@ -23,9 +23,9 @@ public class IndexController {
         Map<String,String> map1 = new LinkedHashMap<String,String>();
         Map<String,String> map2 = new LinkedHashMap<String,String>();
         Map<String,String> map3 = new LinkedHashMap<String,String>();
-        map1.put("zhangsan","11");
-        map2.put("lisi","22");
-        map3.put("wangwu","33");
+        map1.put("name","zhangsan");
+        map2.put("name","lisi");
+        map3.put("name","wangwu");
         list.add(map1);
         list.add(map2);
         list.add(map3);
