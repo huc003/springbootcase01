@@ -1,15 +1,15 @@
 package com.example.action;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by hucheng on 2017/3/28.
  */
-@RestController
+@Controller
 public class WelComeController {
     @RequestMapping("/")
     public String welcome(){
-        return "welcome!!!";
+        return "login";
     }
 }
