@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 返回页面的类
  * Created by huc on 2017/3/28.
  */
 @Controller
@@ -32,5 +33,16 @@ public class IndexController {
         modelMap.addAttribute("peoplo",list);
         modelMap.addAttribute("singlePerson",map);
         return "index";// return模板文件的名称，对应src/main/resources/templates/index.html
+    }
+
+    @RequestMapping("/main")//返回页面的方法
+    public String main(ModelMap modelMap,String url_address){
+        modelMap.addAttribute("url_address",url_address);
+        return "main";
+    }
+
+    @RequestMapping("/rule")
+    public String rule(){
+        return "rule";
     }
 }

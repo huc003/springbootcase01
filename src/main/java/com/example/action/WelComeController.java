@@ -12,4 +12,5 @@ public class WelComeController {
     public String welcome(){
         return "login";
     }
+
 }

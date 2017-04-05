@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>后台登录</title>
+    <script src="../assets/js/amazeui.min.js"></script>
+    <script src="../jquery-3.2.0.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="../assets/css/app.css"/>
+    <script src="../static/assets/js/amazeui.min.js"></script>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"/>
+    <!--<script th:src="@{jquery-3.2.0.min.js}"></script>-->
+    <!--<link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}"/>-->
+    <!--<link rel="stylesheet" th:href="@{/assets/css/app.css}"/>-->
+    <!--<script th:src="@{/assets/js/amazeui.min.js}"></script>-->
+
+</head>
+<body>
+<div class="am-container">
+    <div class="am-center" style="width: 200px;height: 100px;">
+        <div class="am-center am-text-center" style="">
+            <label>后台管理系统</label>
+        </div>
+        <div>
+            <input type="text" id="username" name="username" placeholder="用户名" class="am-form-field am-radius"/>
+        </div>
+        <div>
+            <input type="password" id="password" name="password" placeholder="密码" class="am-form-field am-radius"/>
+        </div>
+        <div class="am-center am-text-center">
+            <input type="submit" value="登录" class="am-btn am-btn-success"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
