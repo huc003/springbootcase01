@@ -14,7 +14,7 @@
     <script th:src="@{../assets/js/amazeui.ie8polyfill.js}"></script>
 </head>
 <body>
-<div>
+<div style="width: 100%;height: 100%">
     <div style="width:100%;height: 50px;clear: none">
         <div style="width: 20%;float: left;line-height: 50px;padding-left: 20px;">
             后台管理系统
@@ -44,7 +44,7 @@
                     <i class="am-icon-cog am-margin-left-sm"></i> 系统管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
-                    <li><a href="/index/main?url_address=/system/variable"><i class="am-icon-cog am-margin-left-sm"></i> 系统变量 </a></li>
+                    <li><a href="/index/main?url_address=/system/variable&amp;off=system"><i class="am-icon-cog am-margin-left-sm"></i> 系统变量 </a></li>
                     <li><a href="#/userList/0"><i class="am-icon-user-secret am-margin-left-sm"></i> 角色管理 </a></li>
                     <li><a href="#/userList/0"><i class="am-icon-user am-margin-left-sm"></i> 用户管理 </a></li>
                 </ul>
@@ -71,12 +71,21 @@
         </ul>
         </nav>
     </div>
-    <div class="" style="width: 85%;height: auto;float: right;border-top: 1px solid #dddedd;">
-        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" th:src="${url_address}"></iframe>
+    <div class="" style="width: 85%;height:100%;float: right;border-top: 1px solid #dddedd;border-left: 1px solid #dddedd">
+        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" height="500px" th:src="${url_address}"></iframe>
     </div>
     </div>
 </div>
-<script>
-</script>
 </body>
+<script th:inline="javascript">
+    $(function () {
+        //菜单折叠
+        var s = [[${off}]];
+        if(s=="system"){
+            $("#user-nav").addClass("am-in");
+        }else{
+            $("#user-nav").removeClass("am-in");
+        }
+    })
+</script>
 </html>

@@ -36,8 +36,10 @@ public class IndexController {
     }
 
     @RequestMapping("/main")//返回页面的方法
-    public String main(ModelMap modelMap,String url_address){
+    public String main(ModelMap modelMap,String url_address,String off){
         modelMap.addAttribute("url_address",url_address);
+        modelMap.addAttribute("off",off);
+//        System.out.println(url_address+"?off="+off);
         return "main";
     }
 

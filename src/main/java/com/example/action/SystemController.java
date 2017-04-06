@@ -20,8 +20,7 @@ public class SystemController {
 
     @RequestMapping("/variable")
     public String variable(ModelMap modelMap){
-//        modelMap.addAttribute("url_address","");
-        System.out.println(newsService.newsById(1));
+        modelMap.addAttribute("news_list",newsService.newsList());
         return "variable";
     }
 

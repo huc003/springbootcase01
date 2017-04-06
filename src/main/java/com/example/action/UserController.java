@@ -12,7 +12,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public String login(String username,String password){
-        return "redirect:/index/main?url_address=/index/rule";
+        return "redirect:/index/main?url_address=/index/rule&off=user";
     }
 
     @RequestMapping("/out")

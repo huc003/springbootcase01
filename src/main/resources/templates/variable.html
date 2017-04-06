@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css"/>
+    <script src="../static/assets/js/handlebars.min.js"></script>
+    <script src="../static/assets/js/amazeui.min.js"></script>
+    <script th:src="@{../jquery-3.2.0.min.js}"></script>
+    <link rel="stylesheet" th:href="@{../assets/css/amazeui.min.css}"/>
+    <script th:src="@{../assets/js/amazeui.min.js}"></script>
+    <script th:src="@{../assets/js/handlebars.min.js}"></script>
+    <script th:src="@{../assets/js/amazeui.widgets.helper.js}"></script>
+    <script th:src="@{../assets/js/amazeui.ie8polyfill.js}"></script>
 </head>
-<body>
+<body style="padding: 5px;">
 系统变量页面
+<div style="height: auto">
+    <table  class="am-table am-table-striped am-table-hover">
+        <thead>
+            <td>id</td>
+            <td>标题</td>
+            <td>内容</td>
+        </thead>
+        <tr th:each="news:${news_list}">
+            <td th:text="${news.id}"></td>
+            <td th:text="${news.title}"></td>
+            <td th:text="${news.text}"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>
