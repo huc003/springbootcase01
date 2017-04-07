@@ -1,6 +1,6 @@
 package com.example.action;
 
-import com.example.service.NewsService;
+import com.example.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SystemController {
 
     @Autowired
-    private NewsService newsService;
+    private SystemService systemService;
 
-    @RequestMapping("/variable")
-    public String variable(ModelMap modelMap){
-        modelMap.addAttribute("news_list",newsService.newsList());
-        return "variable";
+    @RequestMapping("/system")
+    public String system(ModelMap modelMap){
+        modelMap.addAttribute("system_list",systemService.systemList());
+        return "system";
     }
 
 }

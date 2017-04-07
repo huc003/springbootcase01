@@ -30,7 +30,7 @@
         </div>
     </div>
     <div style="clear: none">
-    <div class="" style="width:15%;height:auto;float: left;border-top: 1px solid #dddedd;border-right: 1px solid #dddedd">
+    <div class="" style="width:12%;height:auto;float: left;border-top: 1px solid #dddedd;border-right: 1px solid #dddedd">
         <nav>
         <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
             <li  class="am-panel">
@@ -44,7 +44,7 @@
                     <i class="am-icon-cog am-margin-left-sm"></i> 系统管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
-                    <li><a href="/index/main?url_address=/system/variable&amp;off=system"><i class="am-icon-cog am-margin-left-sm"></i> 系统变量 </a></li>
+                    <li><a href="/index/main?url_address=/system/system&amp;off=system"><i class="am-icon-cog am-margin-left-sm"></i> 系统参数 </a></li>
                     <li><a href="#/userList/0"><i class="am-icon-user-secret am-margin-left-sm"></i> 角色管理 </a></li>
                     <li><a href="#/userList/0"><i class="am-icon-user am-margin-left-sm"></i> 用户管理 </a></li>
                 </ul>
@@ -71,14 +71,25 @@
         </ul>
         </nav>
     </div>
-    <div class="" style="width: 85%;height:100%;float: right;border-top: 1px solid #dddedd;border-left: 1px solid #dddedd">
-        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" height="500px" th:src="${url_address}"></iframe>
+    <div class="" style="width: 88%;height:100%;float: right;border-top: 1px solid #dddedd;border-left: 1px solid #dddedd">
+        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" th:src="${url_address}"></iframe>
     </div>
     </div>
 </div>
 </body>
 <script th:inline="javascript">
     $(function () {
+        function setIframeHeight(iframe) {
+            if (iframe) {
+                var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                if (iframeWin.document.body) {
+                    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+                }
+            }
+        };
+        window.onload = function () {
+            setIframeHeight(document.getElementById('ad'));
+        };
         //菜单折叠
         var s = [[${off}]];
         if(s=="system"){
