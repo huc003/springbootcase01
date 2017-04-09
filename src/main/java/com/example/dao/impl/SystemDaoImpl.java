@@ -1,5 +1,6 @@
 package com.example.dao.impl;
 
+import com.example.bean.Page;
 import com.example.dao.SystemDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,8 +19,14 @@ public class SystemDaoImpl implements SystemDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Map<String, Object>> systemList() {
-        String sql = "select * from dw_system order by id desc";
-        return jdbcTemplate.queryForList(sql);
+    public List<Map<String, Object>> systemList(Page page) {
+        String sql = "select * from dw_system order by id desc limit ?,?";
+        return jdbcTemplate.queryForList(sql,new Object[]{page.getOffset(),page.getLimit()});
+    }
+
+    @Override
+    public Map<String, Object> systemCount() {
+        String sql = "select count(1) as total_num from dw_system";
+        return jdbcTemplate.queryForMap(sql);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.action;
 
+import com.example.bean.Page;
 import com.example.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,11 @@ public class SystemController {
     private SystemService systemService;
 
     @RequestMapping("/system")
-    public String system(ModelMap modelMap){
-        modelMap.addAttribute("system_list",systemService.systemList());
+    public String system(ModelMap modelMap, Page page){
+        modelMap.addAttribute("system_list",systemService.systemList(page));
+        modelMap.addAttribute("count",systemService.systemCount());
+        modelMap.addAttribute("offset",page.getOffset());
+        modelMap.addAttribute("url","/system/system");
         return "system";
     }
 

@@ -12,6 +12,14 @@
     <script th:src="@{../assets/js/handlebars.min.js}"></script>
     <script th:src="@{../assets/js/amazeui.widgets.helper.js}"></script>
     <script th:src="@{../assets/js/amazeui.ie8polyfill.js}"></script>
+    <style>
+        body{
+            font-size: 12px;
+        }
+        a{
+            color: #323332;
+        }
+    </style>
 </head>
 <body>
 <div style="width: 100%;height: 100%">
@@ -34,7 +42,7 @@
         <nav>
         <ul class="am-list admin-sidebar-list" id="collapase-nav-1">
             <li  class="am-panel">
-                <a href="/index/main?url_address=/index/rule">
+                <a style="" href="/index/main?url_address=/index/rule">
                     <i class="am-icon-home am-margin-left-sm"></i> 首页
                 </a>
             </li>
@@ -49,15 +57,15 @@
                     <li><a href="#/userList/0"><i class="am-icon-user am-margin-left-sm"></i> 用户管理 </a></li>
                 </ul>
             </li>
-            <!--<li class="am-panel">-->
-                <!--<a data-am-collapse="{parent: '#collapase-nav-1', target: '#company-nav'}">-->
-                    <!--<i class="am-icon-table am-margin-left-sm"></i> 单位（部门）管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>-->
-                <!--</a>-->
-                <!--<ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">-->
-                    <!--<li><a href="#/companyAdd"><span class="am-icon-table am-margin-left-sm"></span> 添加单位（部门） </a></li>-->
-                    <!--<li><a href="#/companyList/0"><span class="am-icon-table am-margin-left-sm"></span> 单位（部门）列表 </a></li>-->
-                <!--</ul>-->
-            <!--</li>-->
+            <li class="am-panel">
+                <a data-am-collapse="{parent: '#collapase-nav-1', target: '#company-nav'}">
+                    <i class="am-icon-user am-margin-left-sm"></i> 客户管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">
+                    <li><a href="#/companyAdd"><span class="am-icon-users am-margin-left-sm"></span> 全部客户 </a></li>
+                    <li><a href="#/companyList/0"><span class="am-icon-share-alt am-margin-left-sm"></span> 邀请关系 </a></li>
+                </ul>
+            </li>
 
             <!--<li class="am-panel">-->
                 <!--<a data-am-collapse="{parent: '#collapase-nav-1', target: '#role-nav'}">-->
@@ -72,7 +80,7 @@
         </nav>
     </div>
     <div class="" style="width: 88%;height:100%;float: right;border-top: 1px solid #dddedd;border-left: 1px solid #dddedd">
-        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" th:src="${url_address}"></iframe>
+        <iframe id="ad" FRAMEBORDER="0" scrolling="no" width="100%" style="min-height: 600px" th:src="${url_address}"></iframe>
     </div>
     </div>
 </div>

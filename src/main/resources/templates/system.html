@@ -12,15 +12,20 @@
     <script th:src="@{../assets/js/handlebars.min.js}"></script>
     <script th:src="@{../assets/js/amazeui.widgets.helper.js}"></script>
     <script th:src="@{../assets/js/amazeui.ie8polyfill.js}"></script>
+    <style>
+        body{
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body style="padding: 10px;">
-<label>系统参数页面</label>
-<div style="padding-bottom:20px;padding-top:20px;">
+<label><h2>系统参数</h2></label>
+<div style="">
     <form class="am-form-inline" role="form">
         <div class="am-form-group">
-            <input type="text" class="am-form-field" placeholder="名称"/>
+            <input type="text" class="am-form-field am-input-sm" placeholder="名称"/>
         </div>
-        <button type="submit" class="am-btn">搜索</button>
+        <button type="submit" class="am-btn am-btn-sm">搜索</button>
     </form>
 </div>
 <div style="height: auto">
@@ -39,13 +44,87 @@
             <td th:text="${system.name}"></td>
             <td th:text="${system.nid}"></td>
             <td th:text="${system.value}"></td>
-            <td><button class="am-btn">编辑</button></td>
+            <td><button class="am-btn am-btn-xs">编辑</button></td>
         </tr>
     </table>
+</div>
+<div>
+    <ul id="page" class="am-pagination ">
+        <li class="am-disabled pc"><a>共<span th:text="${count.total_num}"></span>记录</a></li>
+        <li id="first" class="am-disabled pc"><a onclick="firstAndLast(1)">&laquo;</a></li>
+        <li id="up" class="am-disabled pc"><a onclick="upAnddown(1)">上一页</a></li>
+        <li id="down" class="pc"><a onclick="upAnddown(2)">下一页</a></li>
+        <li id="last" class="pc"><a onclick="firstAndLast(2)">&raquo;</a></li>
+    </ul>
 </div>
 </body>
 <script th:inline="javascript">
     $(function () {
+        //计算分页
+        //总数量
+        var total_num = [[${count.total_num}]];
+        var limit = 10;
+        //一共多少页
+        var page = Math.ceil((total_num/10));
+        //当前页数
+        var offset = [[${offset}]];
+        var url = [[${url}]];
+        for(var i=page;i>0;i--){
+            var n = i;
+            var perpage = ((n-1)*10);
+            if(offset==perpage){
+                $("#up").after('<li class="am-active menu"><a href="'+url+'?offset='+perpage+'">'+n+'</a></li>');
+            }else{
+                $("#up").after('<li class="menu"><a href="'+url+'?offset='+perpage+'">'+n+'</a></li>');
+            }
+        }
+        var perPage = offset/10;
+        if(perPage>=2){
+            //当当前页大于3的时候隐藏前两个按钮，隐藏当前页+2后面的按钮
+            var p = $(".menu").eq(perPage-2);
+            p.prevAll().not(".pc").hide();
+            var n = $(".menu").eq(perPage+2);
+            n.nextAll().not(".pc").hide();
+        }else{
+            if(perPage==1){
+                var n = $(".menu").eq(perPage+3);
+            }else {
+                var n = $(".menu").eq(perPage+4);
+            }
+            n.nextAll().not(".pc").hide();
+        }
+        if(perPage>=1){
+            $("#first").removeClass("am-disabled");
+            $("#up").removeClass("am-disabled");
+        }
+        if((perPage+1)>=page){
+            $("#last").addClass("am-disabled");
+            $("#down").addClass("am-disabled");
+        }
     })
+    //第一页、最后一页
+    function firstAndLast(p) {
+        var total_num = [[${count.total_num}]];
+        var offset = [[${offset}]];
+        var url = [[${url}]];
+        var page = Math.floor((total_num/10));
+        if (p==1){
+            offset = 0;
+        }else {
+            offset = page*10;
+        }
+        window.location = url+"?offset="+offset;
+    }
+    //上一页、下一页
+    function upAnddown(p) {
+        var offset = [[${offset}]];
+        var url = [[${url}]];
+        if (p==1){
+            offset = offset-10;
+        }else {
+            offset = offset + 10;
+        }
+        window.location = url+"?offset="+offset;
+    }
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.bean.Page;
 import com.example.dao.SystemDao;
 import com.example.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,17 @@ public class SystemServiceImpl implements SystemService {
 
     @Autowired
     private SystemDao systemDao;
+
     @Override
-    public List<Map<String, Object>> systemList() {
-        return systemDao.systemList();
+    public List<Map<String, Object>> systemList(Page page) {
+//        Page page = new Page();
+//        page.setOffset(0);
+//        page.setLimit(10);
+        return systemDao.systemList(page);
+    }
+
+    @Override
+    public Map<String, Object> systemCount() {
+        return systemDao.systemCount();
     }
 }
